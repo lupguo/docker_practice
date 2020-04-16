@@ -17,27 +17,33 @@ script:
 
 after_success:
 - sudo chmod -R 777 _book
-- echo "FROM nginx:1.13.8-alpine" >> Dockerfile
+
+- echo "FROM nginx:alpine" >> Dockerfile
 - echo "COPY _book /usr/share/nginx/html" >> Dockerfile
+
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-- docker build -t dockerpracticecn/docker_practice .
-- docker run -dit --rm -p 4000:80 dockerpracticecn/docker_practice
+
+- docker build -t dockerpracticesig/docker_practice .
+- docker run -dit --rm -p 4000:80 dockerpracticesig/docker_practice
+
 - sleep 5
 - curl 127.0.0.1:4000
-- docker push dockerpracticecn/docker_practice
+
+- docker push dockerpracticesig/docker_practice
+
 - cd _book
+- rm -rf .github/workflows
 - git init
-- git remote add origin "$REPO"
+- git remote add origin "$DEPLOY_REPO"
 - git add .
 - COMMIT=`date "+%F %T"`
-- git commit -m "Travis CI Site updated $COMMIT"
+- git commit -m "Travis CI Site updated $COMMIT yeasy/docker_practice@${TRAVIS_COMMIT}"
 - git push -f origin master:"$DEPLOY_BRANCH"
 
 env:
   global:
-  - DEPLOY_BRANCH: pages
-  # - DEPLOY_BRANCH: legacy-pages
-  - REPO: git@github.com:yeasy/docker_practice.git
+  - DEPLOY_BRANCH: master
+  - DEPLOY_REPO: git@github.com:docker-practice/zh-cn.git
 
 addons:
   ssh_known_hosts:
@@ -46,5 +52,3 @@ addons:
 branches:
   only:
   - master
-  - dev
-  # - docker-legacy

@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tkstorm/docker_practice.git"
+    "url": "git+https://github.com/lupguo/docker_practice.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tkstorm/docker_practice/issues"
+    "url": "https://github.com/lupguo/docker_practice/issues"
   },
-  "homepage": "https://github.com/tkstorm/docker_practice#readme",
+  "homepage": "https://github.com/lupguo/docker_practice#readme",
   "dependencies": {
     "gitbook-plugin-editlink": "^1.0.2",
     "gitbook-plugin-image-captions": "^3.1.0",
