@@ -16,7 +16,7 @@ $ docker-machine create -d virtualbox test
 
 `--engine-opt dns=114.114.114.114` 配置 Docker 的默认 DNS
 
-`--engine-registry-mirror https://registry.docker-cn.com` 配置 Docker 的仓库镜像
+`--engine-registry-mirror https://hub-mirror.c.163.com` 配置 Docker 的仓库镜像
 
 `--virtualbox-memory 2048` 配置主机内存
 
@@ -37,7 +37,7 @@ $ docker-machine create \
       -d xhyve \
       # --xhyve-boot2docker-url ~/.docker/machine/cache/boot2docker.iso \
       --engine-opt dns=114.114.114.114 \
-      --engine-registry-mirror https://registry.docker-cn.com \
+      --engine-registry-mirror https://hub-mirror.c.163.com \
       --xhyve-memory-size 2048 \
       --xhyve-rawdisk \
       --xhyve-cpu-count 2 \
@@ -50,7 +50,7 @@ $ docker-machine create \
 
 #### Windows 10
 
-Windows 10 安装 Docker for Windows 之后不能再安装 VirtualBox，也就不能使用 `virtualbox` 驱动来创建 Docker Machine，我们可以选择使用 `hyperv` 驱动。
+Windows 10 安装 Docker Desktop for Windows 之后不能再安装 VirtualBox，也就不能使用 `virtualbox` 驱动来创建 Docker Machine，我们可以选择使用 `hyperv` 驱动。
 
 > 注意，必须事先在 `Hyper-V` 管理器中新建一个 **外部虚拟交换机** 执行下面的命令时，使用 `--hyperv-virtual-switch=MY_SWITCH` 指定虚拟交换机名称
 

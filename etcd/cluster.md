@@ -1,4 +1,4 @@
-## etcd 集群
+# etcd 集群
 
 下面我们使用 [Docker Compose](../compose/) 模拟启动一个 3 节点的 `etcd` 集群。
 
@@ -9,7 +9,7 @@ version: "3.6"
 services:
 
   node1:
-    image: quay.io/coreos/etcd
+    image: quay.io/coreos/etcd:v3.4.0
     volumes:
       - node1-data:/etcd-data
     expose:
@@ -41,7 +41,7 @@ services:
       - docker-etcd
 
   node2:
-    image: quay.io/coreos/etcd
+    image: quay.io/coreos/etcd:v3.4.0
     volumes:
       - node2-data:/etcd-data
     networks:
@@ -73,7 +73,7 @@ services:
       - docker-etcd
 
   node3:
-    image: quay.io/coreos/etcd
+    image: quay.io/coreos/etcd:v3.4.0
     volumes:
       - node3-data:/etcd-data
     networks:

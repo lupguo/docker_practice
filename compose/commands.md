@@ -1,6 +1,7 @@
-## Compose 命令说明
+# Compose 命令说明
 
-### 命令对象与格式
+## 命令对象与格式
+
 对于 Compose 来说，大部分命令的对象既可以是项目本身，也可以指定为项目中的服务或者容器。如果没有特别的说明，命令对象将是项目，这意味着项目中所有的服务都会受到命令影响。
 
 执行 `docker-compose [COMMAND] --help` 或者 `docker-compose help [COMMAND]` 可以查看具体某个命令的使用格式。
@@ -11,7 +12,7 @@
 docker-compose [-f=<arg>...] [options] [COMMAND] [ARGS...]
 ```
 
-### 命令选项
+## 命令选项
 
 * `-f, --file FILE` 指定使用的 Compose 模板文件，默认为 `docker-compose.yml`，可以多次指定。
 
@@ -25,9 +26,9 @@ docker-compose [-f=<arg>...] [options] [COMMAND] [ARGS...]
 
 * `-v, --version` 打印版本并退出。
 
-### 命令使用说明
+## 命令使用说明
 
-#### `build`
+### `build`
 
 格式为 `docker-compose build [options] [SERVICE...]`。
 
@@ -45,27 +46,28 @@ docker-compose [-f=<arg>...] [options] [COMMAND] [ARGS...]
 
 * `--pull` 始终尝试通过 pull 来获取更新版本的镜像。
 
-#### `config`
+### `config`
 
 验证 Compose 文件格式是否正确，若正确则显示配置，若格式错误显示错误原因。
 
-#### `down`
+### `down`
 
 此命令将会停止 `up` 命令所启动的容器，并移除网络
 
-#### `exec`
+### `exec`
 
 进入指定的容器。
 
-#### `help`
+### `help`
 
 获得一个命令的帮助。
 
-#### `images`
+### `images`
 
 列出 Compose 文件中包含的镜像。
 
-#### `kill`
+### `kill`
+
 格式为 `docker-compose kill [options] [SERVICE...]`。
 
 通过发送 `SIGKILL` 信号来强制停止服务容器。
@@ -76,19 +78,22 @@ docker-compose [-f=<arg>...] [options] [COMMAND] [ARGS...]
 $ docker-compose kill -s SIGINT
 ```
 
-#### `logs`
+### `logs`
+
 格式为 `docker-compose logs [options] [SERVICE...]`。
 
 查看服务容器的输出。默认情况下，docker-compose 将对不同的服务输出使用不同的颜色来区分。可以通过 `--no-color` 来关闭颜色。
 
 该命令在调试问题的时候十分有用。
 
-#### `pause`
+### `pause`
+
 格式为 `docker-compose pause [SERVICE...]`。
 
 暂停一个服务容器。
 
-#### `port`
+### `port`
+
 格式为 `docker-compose port [options] SERVICE PRIVATE_PORT`。
 
 打印某个容器端口所映射的公共端口。
@@ -99,7 +104,8 @@ $ docker-compose kill -s SIGINT
 
 * `--index=index` 如果同一服务存在多个容器，指定命令对象容器的序号（默认为 1）。
 
-#### `ps`
+### `ps`
+
 格式为 `docker-compose ps [options] [SERVICE...]`。
 
 列出项目中目前的所有容器。
@@ -108,7 +114,8 @@ $ docker-compose kill -s SIGINT
 
 * `-q` 只打印容器的 ID 信息。
 
-#### `pull`
+### `pull`
+
 格式为 `docker-compose pull [options] [SERVICE...]`。
 
 拉取服务依赖的镜像。
@@ -117,11 +124,12 @@ $ docker-compose kill -s SIGINT
 
 * `--ignore-pull-failures` 忽略拉取镜像过程中的错误。
 
-#### `push`
+### `push`
 
 推送服务依赖的镜像到 Docker 镜像仓库。
 
-#### `restart`
+### `restart`
+
 格式为 `docker-compose restart [options] [SERVICE...]`。
 
 重启项目中的服务。
@@ -130,7 +138,8 @@ $ docker-compose kill -s SIGINT
 
 * `-t, --timeout TIMEOUT` 指定重启前停止容器的超时（默认为 10 秒）。
 
-#### `rm`
+### `rm`
+
 格式为 `docker-compose rm [options] [SERVICE...]`。
 
 删除所有（停止状态的）服务容器。推荐先执行 `docker-compose stop` 命令来停止容器。
@@ -141,7 +150,7 @@ $ docker-compose kill -s SIGINT
 
 * `-v` 删除容器所挂载的数据卷。
 
-#### `run`
+### `run`
 格式为 `docker-compose run [options] [-p PORT...] [-e KEY=VAL...] SERVICE [COMMAND] [ARGS...]`。
 
 在指定服务上执行一个命令。
@@ -194,7 +203,8 @@ $ docker-compose run --no-deps web python manage.py shell
 
 * `-T` 不分配伪 tty，意味着依赖 tty 的指令将无法运行。
 
-#### `scale`
+### `scale`
+
 格式为 `docker-compose scale [options] [SERVICE=NUM...]`。
 
 设置指定服务运行的容器个数。
@@ -213,12 +223,14 @@ $ docker-compose scale web=3 db=2
 
 * `-t, --timeout TIMEOUT` 停止容器时候的超时（默认为 10 秒）。
 
-#### `start`
+### `start`
+
 格式为 `docker-compose start [SERVICE...]`。
 
 启动已经存在的服务容器。
 
-#### `stop`
+### `stop`
+
 格式为 `docker-compose stop [options] [SERVICE...]`。
 
 停止已经处于运行状态的容器，但不删除它。通过 `docker-compose start` 可以再次启动这些容器。
@@ -227,16 +239,18 @@ $ docker-compose scale web=3 db=2
 
 * `-t, --timeout TIMEOUT` 停止容器时候的超时（默认为 10 秒）。
 
-#### `top`
+### `top`
 
 查看各个服务容器内运行的进程。
 
-#### `unpause`
+### `unpause`
+
 格式为 `docker-compose unpause [SERVICE...]`。
 
 恢复处于暂停状态中的服务。
 
-#### `up`
+### `up`
+
 格式为 `docker-compose up [options] [SERVICE...]`。
 
 该命令十分强大，它将尝试自动完成包括构建镜像，（重新）创建服务，启动服务，并关联服务相关容器的一系列操作。
@@ -269,7 +283,12 @@ $ docker-compose scale web=3 db=2
 
 * `-t, --timeout TIMEOUT` 停止容器时候的超时（默认为 10 秒）。
 
-#### `version`
+### `version`
+
 格式为 `docker-compose version`。
 
 打印版本信息。
+
+## 参考资料
+
+* [官方文档](https://docs.docker.com/compose/reference/overview/)
